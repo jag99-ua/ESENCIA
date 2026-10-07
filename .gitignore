@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+node_modules/
+.vercel/
+.env
+.env.*
+!.env.example
+
+# Briefing interno: contiene campañas aún sin anunciar.
+Project_Context.md
+docs/CONTENT_CHECKLIST.md

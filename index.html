@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>ESENCIA — Colectivo de música electrónica en Alicante</title>
+  <meta name="description" content="ESENCIA nace en Alicante en 2024. Un colectivo de amigos, cultura musical y eventos: descubre su historia y universo sonoro.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="ESENCIA — Alicante">
+  <meta property="og:description" content="Colectivo de música electrónica. Alicante, desde 2024.">
+  <meta name="twitter:card" content="summary">
+  <!-- Añadir canonical, og:url, og:image y favicon cuando haya dominio y logos oficiales. -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/events.css">
+  <link rel="stylesheet" href="css/watch.css">
+  <link rel="stylesheet" href="css/commerce.css">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/store.js"></script>
+  <script defer src="js/cart.js"></script>
+  <script defer src="js/events.js"></script>
+  <script defer src="js/navigation.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/archive.js"></script>
+  <script defer src="js/media.js"></script>
+  <script defer src="js/watch.js"></script>
+  <script defer src="js/commerce.js"></script>
+  <link rel="stylesheet" href="css/art-direction.css">
+  <script defer src="js/logo-sculpture.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="header">
+    <a class="home-link" href="#inicio" aria-label="Inicio de ESENCIA"><img src="assets/logos/54556e34-e6f0-4224-a22b-40b828f6fcf9.png" alt="ESENCIA" width="2048" height="184"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>Menú +</button>
+    <nav id="navigation" aria-label="Principal">
+      <a href="#colectivo">Colectivo</a><a href="#archivo">Archivo</a><a href="#watch">Watch</a><a href="#eventos">Eventos</a><a href="shop.html">Shop</a><a href="contact.html">Contacto ↗</a><a href="cart.html">Carrito (<span data-cart-count>0</span>)</a>
+    </nav>
+  </header>
+  <main id="contenido">
+    <section id="inicio" class="hero" aria-labelledby="hero-title">
+      <div class="hero-meta meta"><span>Alicante, España</span><span>Desde 2024</span><span>Colectivo / Promotora</span></div>
+      <h1 id="hero-title" class="sr-only">ESENCIA. Colectivo de música electrónica en Alicante.</h1>
+      <div class="wordmark-slot has-asset" data-wordmark>
+        <img src="assets/logos/54556e34-e6f0-4224-a22b-40b828f6fcf9.png" alt="ESENCIA" width="2048" height="184" fetchpriority="high" decoding="async">
+      </div>
+      <div class="hero-stage">
+        <div class="logo-sculpture" data-logo-sculpture="bomb">
+          <img class="sculpture-fallback" src="assets/logos/978d7eee-0ed3-4bf8-a2be-967ae82970fa.jpg" alt="" width="2048" height="2047" decoding="async">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <p class="hero-stage-note meta">Un símbolo.<br>La misma ESENCIA.</p>
+      </div>
+      <div class="hero-exit">
+        <a class="enter" href="#colectivo"><span>Descubre ESENCIA</span><span aria-hidden="true">↓</span></a>
+        <button class="artifact-button motion-toggle" type="button" data-artifact-pause aria-pressed="false" disabled>Pausar animaciones</button>
+      </div>
+    </section>
+
+    <section id="colectivo" class="section about" aria-labelledby="about-title">
+      <div class="section-label meta"><span>01 / El colectivo</span><span>Desde aquí</span></div>
+      <h2 id="about-title" class="display">Amigos.<br>Música.<br><span class="outline">Alicante.</span></h2>
+      <div class="about-copy">
+        <p class="collective-intro">Colectivo de<br>música electrónica.</p>
+        <p class="lead">ESENCIA nace en 2024 de un grupo de amigos que compartían una cultura musical y viajaban fuera de Alicante para encontrarla.</p>
+        <p>Decidieron crear en su ciudad las fiestas a las que querían ir. El proyecto reúne música, amistad y comunidad, y abre una puerta a quienes llegan con curiosidad por descubrir estos sonidos.</p>
+        <div class="origin-note meta"><span>El comienzo / GÉNESIS</span><time datetime="2024-11-23">23 noviembre 2024</time></div>
+      </div>
+    </section>
+
+    <section id="eventos" class="section next-event" aria-labelledby="next-title">
+      <div class="section-label meta"><span>02 / Próximo evento</span><span>Next ESENCIA</span></div>
+      <div data-next-event>
+        <h2 id="next-title" class="display">Signal lost<span class="period">.</span></h2>
+        <p class="transmission">Next transmission soon.</p>
+        <p class="muted">Todavía no hay un próximo evento anunciado en esta web.</p>
+      </div>
+    </section>
+
+    <section id="archivo" class="section archive" aria-labelledby="archive-title">
+      <div class="section-label meta"><span>03 / Memoria colectiva</span><span>Todas las ediciones</span></div>
+      <h2 id="archive-title" class="display">Lo que<br>hemos vivido.</h2>
+      <div class="archive-experience" data-event-archive>
+        <div data-event-list><p class="muted">Explora toda la historia de ESENCIA.</p></div>
+        <aside id="home-event-preview" class="event-preview" data-event-preview aria-label="Edición explorada" aria-live="polite" aria-atomic="true"></aside>
+      </div>
+      <a class="text-link" href="events/index.html">Explorar el archivo completo →</a>
+      <noscript><p class="muted">Activa JavaScript para consultar la cronología desde la fuente de datos del archivo.</p></noscript>
+    </section>
+
+    <section id="watch" class="section watch" data-watch aria-labelledby="watch-heading">
+      <div class="section-label meta"><span>04 / Contenido audiovisual</span><span>Canal oficial</span></div>
+      <div class="watch-heading">
+        <h2 id="watch-heading" class="display">Watch<br>ESENCIA.</h2>
+        <div class="watch-counts meta"><span data-session-count>Sessions</span><span data-interview-count>Interviews</span></div>
+      </div>
+      <div id="watch-screen" class="watch-screen" data-watch-screen aria-label="Reproductor del contenido seleccionado"></div>
+      <div class="watch-info">
+        <div><p class="meta" data-watch-label></p><h3 id="watch-current-artist" class="watch-artist" data-watch-artist></h3><p class="watch-title" data-watch-title></p></div>
+        <div class="watch-actions"><a class="watch-external" data-watch-external href="https://www.youtube.com/@EsenciaEvents">Ver en YouTube ↗</a><button class="watch-close" data-watch-close type="button" hidden>Cerrar vídeo ×</button></div>
+      </div>
+      <p class="watch-notice">Al pulsar PLAY se carga el reproductor de YouTube. También puedes ver el contenido directamente en el canal.</p>
+      <div id="watch-catalogue">
+        <div class="watch-filters" data-watch-filters aria-label="Filtrar contenido audiovisual"></div>
+        <div id="watch-list" data-watch-list aria-label="Sesiones y entrevistas de ESENCIA"></div>
+      </div>
+      <p class="sr-only" data-watch-status role="status" aria-live="polite" aria-atomic="true"></p>
+      <div class="watch-links"><a class="text-link" href="#watch-catalogue" data-see-sessions>Ver todas las sesiones →</a><a class="text-link" href="https://www.youtube.com/@EsenciaEvents" data-youtube-channel>Canal oficial de YouTube ↗</a></div>
+      <noscript><p class="muted">Activa JavaScript para explorar sesiones y entrevistas aquí, o visita el canal oficial de YouTube.</p></noscript>
+    </section>
+
+
+
+
+    <section id="galeria" class="section memory" aria-labelledby="memory-title">
+      <div class="section-label meta"><span>05 / Galería</span><span>Memory wall</span></div>
+      <h2 id="memory-title" class="display">La gente.<br>Los recuerdos.</h2>
+      <div class="memory-wall" data-gallery>
+        <div class="memory-frame"><span class="meta">[ Fotografías reales ]</span><p>Pista.</p></div>
+        <div class="memory-frame"><span class="meta">[ Fotografías reales ]</span><p>Amigos.</p></div>
+        <div class="memory-frame"><span class="meta">[ Vídeo / Aftermovie ]</span><p>Movimiento.</p></div>
+      </div>
+      <p class="muted" data-gallery-note>Espacios reservados al material audiovisual de ESENCIA. Assets pendientes.</p>
+    </section>
+
+    <section class="section philosophy" aria-labelledby="philosophy-title">
+      <div class="section-label meta"><span>06 / Comunidad</span><span>Lo que nos une</span></div>
+      <h2 id="philosophy-title" class="display">Amistad.<br>Respeto.<br>Libertad.</h2>
+      <p class="lead">La música puede ser dura. La comunidad se construye con buen rollo, cariño y ganas de bailar.</p>
+      <div class="community-symbol" aria-hidden="true"><img src="assets/logos/978d7eee-0ed3-4bf8-a2be-967ae82970fa.jpg" alt="" width="2048" height="2047" loading="lazy"></div>
+      <!-- El manifiesto y claim oficiales siguen pendientes de validación por el equipo. -->
+    </section>
+
+    <section id="objetos" class="section objects" aria-labelledby="objects-title">
+      <div class="section-label meta"><span>07 / Objetos</span><span>ESENCIA / SHOP</span></div>
+      <div class="shop-preview-intro"><h2 id="objects-title" class="display">Fuera<br>de la pista.</h2><a class="text-link" href="shop.html">Explorar SHOP →</a></div>
+      <p class="demo-banner" data-demo-banner><strong>Catálogo de muestra.</strong> Diseños, productos y precios simulados. No están a la venta.</p>
+      <div class="product-grid" data-products data-limit="3"><p class="muted">Explora el catálogo de muestra en SHOP.</p></div>
+      <div class="shop-preview-links"><a class="text-link" href="shop.html">Ver todos los objetos →</a><a class="text-link" href="cart.html">Ver carrito (<span data-cart-count>0</span>) →</a></div>
+    </section>
+
+    <section id="contacto" class="section contact" aria-labelledby="contact-title">
+      <div class="section-label meta"><span>08 / Contacto</span><span>Alicante, España</span></div>
+      <h2 id="contact-title" class="display">Hablemos<span aria-hidden="true"> ↗</span></h2>
+      <div class="contact-preview"><div><p class="lead">Artistas, colaboraciones, prensa o merchandising. Cuéntanos qué tienes en mente.</p><a class="primary-button text-link" href="contact.html">Contacta con nosotros →</a></div><div class="contact-links" data-contact><p class="muted"><a class="contact-phone" href="tel:+34611434780">+34 611434780 ↗</a></p></div></div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-top meta"><span>Colectivo de música electrónica</span><a href="#inicio">Volver arriba ↑</a></div>
+    <a class="footer-channel meta" data-youtube-channel href="https://www.youtube.com/@EsenciaEvents">YouTube / ESENCIA Events ↗</a>
+    <div class="footer-bottom"><p>Alicante.<br>Desde 2024.</p></div>
+    <div class="wordmark-artifact">
+      <div class="logo-sculpture" data-logo-sculpture="wordmark">
+        <img class="sculpture-fallback wordmark-fallback" src="assets/logos/54556e34-e6f0-4224-a22b-40b828f6fcf9.png" alt="" width="2048" height="184" loading="lazy">
+        <canvas aria-hidden="true"></canvas>
+      </div>
+      <span class="sr-only">ESENCIA</span>
+    </div>
+  <nav class="footer-socials meta" aria-label="Redes sociales"><a href="https://www.instagram.com/esenc1a_events/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.tiktok.com/@esenc1a_events?lang=es" target="_blank" rel="noopener noreferrer">TikTok ↗</a></nav></footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+@media (min-width: 1600px) { .hero { min-height: 850px; } }
+@media (max-width: 900px) {
+  .about, .music-heading, .objects-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .about .section-label { margin-bottom: 1rem; }
+  .about-copy { margin-top: 1rem; max-width: 40rem; }
+  .music-layout { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .memory-wall { gap: .8rem; }
+}
+@media (max-width: 600px) {
+  .header { flex-wrap: wrap; }
+  .header nav { width: 100%; gap: .7rem 1.2rem; padding-top: .5rem; }
+  .header.menu-ready nav { display: none; }
+  .header.menu-ready nav.is-open { display: flex; flex-direction: column; padding-block: 1rem; }
+  .header.menu-ready nav a { padding: .6rem 0; }
+  .menu-toggle:not([hidden]) { display: block; }
+  .hero { min-height: calc(100svh - 4.5rem); padding-top: 1.4rem; }
+  .hero-meta { font-size: .65rem; }
+  .hero-meta span:last-child { width: 100%; }
+  .wordmark-slot { min-height: 200px; margin-block: 2rem; }
+  .hero-bottom { align-items: start; flex-direction: column; gap: 1.5rem; }
+  .enter { justify-content: space-between; width: 100%; }
+  .enter > span:last-child { font-size: 2.5rem; }
+  .hero-index { flex-direction: column; gap: .3rem; margin-top: 1.4rem; }
+  .section-label { margin-bottom: 2rem; flex-wrap: wrap; }
+  .music-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  .sound-panel { min-height: 260px; }
+  .sound-number { font-size: 7rem; }
+  .genre { padding: .75rem; font-size: .75rem; min-height: 44px; }
+  .archive-entry { grid-template-columns: 1fr; gap: .8rem; }
+  .archive-entry time { text-align: left; }
+  .archive-entry p { grid-column: 1; }
+  .memory-wall { grid-template-columns: 1fr 1fr; gap: .8rem; }
+  .memory-frame, .memory-frame:nth-child(2) { min-height: 220px; margin-top: 0; }
+  .memory-frame:nth-child(3) { grid-column: 1 / -1; min-height: 160px; }
+  .memory-frame .meta { font-size: .6rem; }
+  .contact .display { font-size: clamp(2.6rem, 12vw, 4.5rem); }
+  .footer-top { flex-direction: column; }
+  .bomb-slot { width: 120px; }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema":  "https://openapi.vercel.sh/vercel.json",
+    "framework":  null,
+    "buildCommand":  "",
+    "outputDirectory":  ".",
+    "routes":  [
+                   {
+                       "src":  "/(Project_Context\\.md|README\\.md|DESIGN(.*)\\.md|docs(/.*)?|tests(/.*)?|\\.env(.*)?|.*\\.gitkeep)",
+                       "status":  404
+                   },
+                   {
+                       "handle":  "filesystem"
+                   }
+               ]
+}

@@ -85,7 +85,7 @@ git push
 No publiques contraseñas ni archivos .env. Project_Context.md y el checklist interno se conservan en local porque contienen información todavía no anunciada.
 
 ## Vercel
-Proyecto ESENCIA ya conectado a GitHub en Vercel. Web: https://esencia-ashen.vercel.app. Para volver a configurar una copia, importa el repositorio en Vercel. Selecciona Other como framework, raíz del proyecto esta carpeta, sin comando de build ni instalación, y directorio de salida raíz (.).
+Proyecto ESENCIA ya conectado a GitHub en Vercel. Web: https://esencia-events.vercel.app. Para volver a configurar una copia, importa el repositorio en Vercel. Selecciona Other como framework, raíz del proyecto esta carpeta, sin comando de build ni instalación, y directorio de salida raíz (.).
 Las páginas son estáticas, sin frameworks. El formulario de contacto usa una función Node de Vercel en api/contact.js.
 Después, cada push a la rama de producción conectada puede desplegar las actualizaciones automáticamente.
 Cuando exista dominio oficial, añade canonical y og:url estáticos en index.html. Configura imagen social oficial, favicon, robots.txt y sitemap.xml con ese dominio; no uses un dominio inventado. La configuración site está preparada, pero los metadatos estáticos son preferibles para crawlers que no ejecutan JavaScript.
@@ -111,3 +111,10 @@ Teléfono confirmado: +34 611434780, editable en contacts.phone de js/data.js y 
 Configura RESEND_API_KEY y RESEND_FROM_EMAIL como variables privadas en Vercel y redepliega. El destinatario es marcos.blayapicazo@gmail.com; WhatsApp/teléfono usan +34 611434780. Pasos en docs/CONTACT_SETUP.md. Las claves no van en GitHub. Instagram y TikTok oficiales están en contacts de js/data.js y los fallbacks de los footers.
 
 Pruebas de la función de contacto: node --test tests/contact.test.cjs. Usan un proveedor simulado y no envían correo real.
+
+
+## Seguridad y privacidad
+Las claves solo se configuran en Vercel; .env.local, .vercel y briefing interno se excluyen de Git. Los encabezados de Vercel restringen scripts externos, iframes y permisos sensibles. Consulta privacy.html para el tratamiento actual de consultas y contenidos externos.
+El repositorio es público: código, assets, datos de contacto y metadatos de commits son visibles. No guardar datos de visitantes allí. Los primeros commits conservan el correo del autor; los posteriores usan noreply. No se ha reescrito el historial.
+El antispam de la función es básico y por instancia; no sustituye un límite distribuido. Siguen pendientes de confirmar identidad legal del responsable, conservación real de consultas y configuración del servicio de correo.
+SUMMER KAOS se muestra por defecto en la vista del archivo, porque dispone de cartel real. Las otras ediciones se exploran con ratón, teclado o tap.

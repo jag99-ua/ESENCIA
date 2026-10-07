@@ -9,6 +9,8 @@
     const full = all();
     const limit = Number(container.dataset.limit);
     const events = limit > 0 ? full.slice(-limit) : full;
+    // Mostrar desde el inicio una edición con cartel real, sin exigir hover/tap.
+    const initial = events.find(item => item.poster || item.posterDesktop || item.posterMobile) || null;
     const rows = [];
     let pinned = null;
     let hovered = null;
@@ -49,7 +51,7 @@
       link.href = detailUrl(event.id);
       panel.append(link);
     }
-    const restore = () => show(pinned || focused || hovered);
+    const restore = () => show(focused || hovered || pinned || initial);
     list.replaceChildren();
     events.forEach(item => {
       const row = node("article", "event-row");
@@ -76,7 +78,7 @@
       });
 
       button.addEventListener("keydown", event => {
-        if (event.key === "Escape") { pinned = null; focused = null; hovered = null; show(null); }
+        if (event.key === "Escape") { pinned = null; focused = null; hovered = null; show(initial); }
       });
       const link = node("a", "event-detail-link", "↗");
       link.href = detailUrl(item.id);
@@ -90,6 +92,6 @@
     });
     compact.addEventListener("change", restore);
     container.addEventListener("pointerleave", () => { hovered = null; restore(); });
-    show(null);
+    show(initial);
   });
 })();

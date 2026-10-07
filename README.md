@@ -71,24 +71,28 @@ Enviar mensaje llama a api/contact.js. Si falla, permite copiar el texto o envia
 Destino confirmado: marcos.blayapicazo@gmail.com. El servidor requiere RESEND_API_KEY y RESEND_FROM_EMAIL en Vercel. Instrucciones en docs/CONTACT_SETUP.md.
 Los datos personales del formulario no se guardan en localStorage. El carrito almacena únicamente productos, tallas y cantidades.
 ## GitHub
-Repositorio: https://github.com/jag99-ua/ESENCIA. Para una copia nueva:
+Repositorio conectado: https://github.com/jag99-ua/ESENCIA, rama main.
+Para descargar una copia nueva:
 ```sh
-git init
-git add .
-git commit -m "Base estática y HOME de ESENCIA"
+git clone https://github.com/jag99-ua/ESENCIA.git
 ```
-Crea un repositorio en GitHub, conecta su URL con git remote add origin URL y sube tu rama con git push -u origin main (ajusta el nombre de tu rama).
-No publiques contraseñas, claves o archivos .env.
+Para publicar cambios desde esta carpeta:
+```sh
+git add .
+git commit -m "Actualizar ESENCIA"
+git push
+```
+No publiques contraseñas ni archivos .env. Project_Context.md y el checklist interno se conservan en local porque contienen información todavía no anunciada.
 
 ## Vercel
-Importa el repositorio de GitHub en Vercel. Selecciona Other como framework, raíz del proyecto esta carpeta, sin comando de build ni instalación, y directorio de salida raíz (.).
+Proyecto ESENCIA ya conectado a GitHub en Vercel. Web: https://esencia-ashen.vercel.app. Para volver a configurar una copia, importa el repositorio en Vercel. Selecciona Other como framework, raíz del proyecto esta carpeta, sin comando de build ni instalación, y directorio de salida raíz (.).
 Las páginas son estáticas, sin frameworks. El formulario de contacto usa una función Node de Vercel en api/contact.js.
 Después, cada push a la rama de producción conectada puede desplegar las actualizaciones automáticamente.
 Cuando exista dominio oficial, añade canonical y og:url estáticos en index.html. Configura imagen social oficial, favicon, robots.txt y sitemap.xml con ese dominio; no uses un dominio inventado. La configuración site está preparada, pero los metadatos estáticos son preferibles para crawlers que no ejecutan JavaScript.
 Antes del lanzamiento revisa privacidad, derechos de imagen y cualquier política necesaria para los servicios que finalmente se activen.
 
 ## Verificar cambios
-Comprueba HOME en móvil, tablet y escritorio; menú con teclado y Escape; botones de géneros por tap; anchors; ausencia de errores de consola; imágenes y enlaces oficiales. Comprueba reduced motion. Al activar la tienda, añade pruebas de tallas, carrito y persistencia.
+Comprueba HOME en móvil, tablet y escritorio; menú con teclado y Escape; archivo por tap; anchors; ausencia de errores de consola; imágenes y enlaces oficiales. Comprueba reduced motion. Al activar la tienda, añade pruebas de tallas, carrito y persistencia.
 
 Configuración comprobada con la documentación oficial: https://vercel.com/docs/builds/configure-a-build y https://vercel.com/docs/project-configuration/vercel-json. Las rutas impiden servir el briefing (contiene conceptos aún no anunciados) y la documentación en Vercel; un repositorio GitHub público sí expone sus archivos.
 ## Dirección visual y animación de los logos
@@ -105,3 +109,5 @@ Teléfono confirmado: +34 611434780, editable en contacts.phone de js/data.js y 
 
 ## Envío real de consultas
 Configura RESEND_API_KEY y RESEND_FROM_EMAIL como variables privadas en Vercel y redepliega. El destinatario es marcos.blayapicazo@gmail.com; WhatsApp/teléfono usan +34 611434780. Pasos en docs/CONTACT_SETUP.md. Las claves no van en GitHub. Instagram y TikTok oficiales están en contacts de js/data.js y los fallbacks de los footers.
+
+Pruebas de la función de contacto: node --test tests/contact.test.cjs. Usan un proveedor simulado y no envían correo real.

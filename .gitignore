@@ -9,3 +9,6 @@ node_modules/
 # Briefing interno: contiene campañas aún sin anunciar.
 Project_Context.md
 docs/CONTENT_CHECKLIST.md
+
+.vercel
+.env*

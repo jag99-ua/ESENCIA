@@ -13,6 +13,6 @@ docs/CONTENT_CHECKLIST.md
 .vercel
 .env*
 
-# Carteles fuente de alta resoluci?n: conservar copia local y respaldo externo.
+# Carteles fuente de alta resolución: conservar copia local y respaldo externo.
 /assets/events/[0-9]*.png
 /assets/events/[0-9]*.jpg

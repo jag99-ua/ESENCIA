@@ -117,8 +117,8 @@ Pruebas de la función de contacto: node --test tests/contact.test.cjs. Usan un 
 Las claves solo se configuran en Vercel; .env.local, .vercel y briefing interno se excluyen de Git. Los encabezados de Vercel restringen scripts externos, iframes y permisos sensibles. Consulta privacy.html para el tratamiento actual de consultas y contenidos externos.
 El repositorio es público: código, assets, datos de contacto y metadatos de commits son visibles. No guardar datos de visitantes allí. Los primeros commits conservan el correo del autor; los posteriores usan noreply. No se ha reescrito el historial.
 El antispam de la función es básico y por instancia; no sustituye un límite distribuido. Siguen pendientes de confirmar identidad legal del responsable, conservación real de consultas y configuración del servicio de correo.
-SUMMER KAOS se muestra por defecto en la vista del archivo, porque dispone de cartel real. Las otras ediciones se exploran con ratón, teclado o tap.
+Los diez eventos tienen cartel real. El archivo comienza con GÉNESIS; explora cada edición con ratón, teclado o tap.
 
 ## Carteles de eventos
-Los diez carteles numerados se asocian por number en js/events.js. La web utiliza assets/events/web/NNN-640.jpg y NNN-1280.jpg, con proporci?n completa, carga diferida y selecci?n responsive. No se publican descripciones crom?ticas.
-Los originales numerados de assets/events se mantienen localmente y se excluyen de Git y Vercel por su gran tama?o (algunos superan 60 MB). Haz una copia de seguridad externa: GitHub conserva las versiones web, no los originales. Para sustituir un cartel, actualiza sus dos versiones web y sus dimensiones en js/events.js.
+Los diez carteles numerados se asocian por number en js/events.js. La web utiliza assets/events/web/NNN-640.jpg y NNN-1280.jpg, con proporción completa, carga diferida y selección responsive. No se publican descripciones cromáticas.
+Los originales numerados de assets/events se mantienen localmente y se excluyen de Git y Vercel por su gran tamaño (algunos superan 60 MB). Haz una copia de seguridad externa: GitHub conserva las versiones web, no los originales. Para sustituir un cartel, actualiza sus dos versiones web y sus dimensiones en js/events.js.

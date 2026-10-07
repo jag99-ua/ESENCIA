@@ -481,7 +481,7 @@ window.ESENCIA_EVENTS = [
     const img = node("img");
     img.src = desktop || source || mobile;
     img.alt = "Cartel original de " + event.displayName;
-    // Variantes del mismo artwork; el navegador elige seg?n tama?o y densidad.
+    // Variantes del mismo artwork; el navegador elige según tamaño y densidad.
     if (Array.isArray(event.posterSrcset) && !desktop && !mobile) {
       img.srcset = event.posterSrcset.filter(item => assetUrl(item.src) && Number.isInteger(item.width) && item.width > 0).map(item => assetUrl(item.src) + " " + item.width + "w").join(", ");
       img.sizes = "(min-width: 500px) 448px, calc(100vw - 32px)";

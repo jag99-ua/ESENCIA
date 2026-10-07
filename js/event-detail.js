@@ -21,9 +21,9 @@
   document.body.dataset.event = event.theme;
   applyTheme(document.body, event);
   document.title = event.displayName + " — " + event.date.slice(0, 4) + " — ESENCIA";
-  document.querySelector('meta[name="description"]').content = event.displayName + ". " + event.date.split("-").reverse().join(".") + ". " + event.concept;
+  document.querySelector('meta[name="description"]').content = event.displayName + ". " + event.date.split("-").reverse().join(".") + ".";
   document.querySelector('meta[property="og:title"]').content = document.title;
-  document.querySelector('meta[property="og:description"]').content = event.concept;
+  document.querySelector('meta[property="og:description"]').content = document.querySelector('meta[name="description"]').content;
   main.replaceChildren();
   const label = node("div", "section-label meta");
   label.append(node("span", "", "Archivo ESENCIA / " + event.number));
@@ -36,11 +36,6 @@
   main.append(metadata);
   const artwork = poster(event);
   if (artwork) main.append(artwork);
-  const concept = node("section", "event-section");
-  concept.append(node("h2", "meta", "El universo de esta edición"));
-  if (event.concept) concept.append(node("p", "lead", event.concept));
-  if (event.colorLabels.length) concept.append(node("p", "event-palette", event.colorLabels.join(" / ")));
-  main.append(concept);
   if (event.lineup.length) {
     const section = node("section", "event-section");
     const list = node("ul", "lineup");

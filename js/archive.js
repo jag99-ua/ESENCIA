@@ -42,11 +42,6 @@
       if (event.type) panel.append(node("p", "event-type", event.type));
       const artwork = poster(event);
       if (artwork) panel.append(artwork);
-      if (event.concept) panel.append(node("p", "event-concept", event.concept));
-      if (event.colorLabels.length) {
-        panel.append(node("p", "meta palette-label", "Universo cromático"));
-        panel.append(node("p", "event-palette", event.colorLabels.join(" / ")));
-      }
       const link = node("a", "text-link", "Ver ficha →");
       link.href = detailUrl(event.id);
       panel.append(link);

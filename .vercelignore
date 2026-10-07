@@ -1,0 +1,6 @@
+.git/
+.vercel/
+.env*
+node_modules/
+assets/events/[0-9]*.png
+assets/events/[0-9]*.jpg

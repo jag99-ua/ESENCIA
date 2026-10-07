@@ -25,7 +25,7 @@ window.ESENCIA_EVENTS = [
     "concept": "Primer evento de ESENCIA. El comienzo del proyecto.",
     "venue": null,
     "lineup": [],
-    "poster": null,
+    "poster": "assets/events/web/001-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -34,7 +34,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1280,
+    "posterHeight": 1440,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/001-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/001-1280.jpg",
+        "width": 1280
+      }
+    ]
   },
   {
     "id": "xplosion-2025",
@@ -56,7 +68,7 @@ window.ESENCIA_EVENTS = [
     "displayName": "XPLOSION",
     "venue": null,
     "lineup": [],
-    "poster": null,
+    "poster": "assets/events/web/002-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -65,7 +77,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1080,
+    "posterHeight": 1350,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/002-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/002-1280.jpg",
+        "width": 1080
+      }
+    ]
   },
   {
     "id": "summer-kaos-2025",
@@ -87,7 +111,7 @@ window.ESENCIA_EVENTS = [
     "displayName": "SUMMER KAOS",
     "venue": null,
     "lineup": [],
-    "poster": "assets/events/Summer Kaos.jpeg",
+    "poster": "assets/events/web/003-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -96,7 +120,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1080,
+    "posterHeight": 1350,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/003-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/003-1280.jpg",
+        "width": 1080
+      }
+    ]
   },
   {
     "id": "x-dimension-2025",
@@ -118,7 +154,7 @@ window.ESENCIA_EVENTS = [
     "displayName": "X DIMENSION",
     "venue": null,
     "lineup": [],
-    "poster": null,
+    "poster": "assets/events/web/004-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -127,7 +163,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1280,
+    "posterHeight": 1603,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/004-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/004-1280.jpg",
+        "width": 1280
+      }
+    ]
   },
   {
     "id": "anniversary-2026",
@@ -149,7 +197,7 @@ window.ESENCIA_EVENTS = [
     "displayName": "ESENCIA ANIVERSARIO",
     "venue": null,
     "lineup": [],
-    "poster": null,
+    "poster": "assets/events/web/005-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -158,7 +206,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1280,
+    "posterHeight": 1602,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/005-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/005-1280.jpg",
+        "width": 1280
+      }
+    ]
   },
   {
     "id": "madrid-2026",
@@ -180,7 +240,7 @@ window.ESENCIA_EVENTS = [
     "displayName": "ESENCIA MADRID",
     "venue": null,
     "lineup": [],
-    "poster": null,
+    "poster": "assets/events/web/006-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -189,7 +249,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1080,
+    "posterHeight": 1440,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/006-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/006-1280.jpg",
+        "width": 1080
+      }
+    ]
   },
   {
     "id": "xplosion-2026",
@@ -211,7 +283,7 @@ window.ESENCIA_EVENTS = [
     "displayName": "XPLOSION",
     "venue": null,
     "lineup": [],
-    "poster": null,
+    "poster": "assets/events/web/007-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -220,7 +292,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1080,
+    "posterHeight": 1320,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/007-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/007-1280.jpg",
+        "width": 1080
+      }
+    ]
   },
   {
     "id": "la-makina-del-tiempo-2026",
@@ -244,7 +328,7 @@ window.ESENCIA_EVENTS = [
     "displayName": "ESENCIA × LA MAKINA DEL TIEMPO",
     "venue": null,
     "lineup": [],
-    "poster": null,
+    "poster": "assets/events/web/008-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -253,7 +337,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1080,
+    "posterHeight": 1350,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/008-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/008-1280.jpg",
+        "width": 1080
+      }
+    ]
   },
   {
     "id": "xavi-style-all-night-long-2026",
@@ -273,7 +369,7 @@ window.ESENCIA_EVENTS = [
     "displayName": "XAVI STYLE — ALL NIGHT LONG",
     "venue": null,
     "lineup": [],
-    "poster": null,
+    "poster": "assets/events/web/009-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -282,7 +378,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1280,
+    "posterHeight": 1594,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/009-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/009-1280.jpg",
+        "width": 1280
+      }
+    ]
   },
   {
     "id": "rebirth-2026",
@@ -306,7 +414,7 @@ window.ESENCIA_EVENTS = [
     "concept": "Un universo de inspiración mesoamericana: jungla, pirámide, piedra, ritual y despertar.",
     "venue": null,
     "lineup": [],
-    "poster": null,
+    "poster": "assets/events/web/010-1280.jpg",
     "posterDesktop": null,
     "posterMobile": null,
     "gallery": [],
@@ -315,7 +423,19 @@ window.ESENCIA_EVENTS = [
     "credits": [],
     "accent": null,
     "secondary": null,
-    "active": true
+    "active": true,
+    "posterWidth": 1080,
+    "posterHeight": 1350,
+    "posterSrcset": [
+      {
+        "src": "assets/events/web/010-640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/events/web/010-1280.jpg",
+        "width": 1080
+      }
+    ]
   }
 ];
 (() => {
@@ -361,6 +481,12 @@ window.ESENCIA_EVENTS = [
     const img = node("img");
     img.src = desktop || source || mobile;
     img.alt = "Cartel original de " + event.displayName;
+    // Variantes del mismo artwork; el navegador elige seg?n tama?o y densidad.
+    if (Array.isArray(event.posterSrcset) && !desktop && !mobile) {
+      img.srcset = event.posterSrcset.filter(item => assetUrl(item.src) && Number.isInteger(item.width) && item.width > 0).map(item => assetUrl(item.src) + " " + item.width + "w").join(", ");
+      img.sizes = "(min-width: 500px) 448px, calc(100vw - 32px)";
+    }
+    if (event.posterWidth > 0 && event.posterHeight > 0) { img.width = event.posterWidth; img.height = event.posterHeight; }
     img.loading = "lazy"; img.decoding = "async";
     picture.append(img);
     return picture;

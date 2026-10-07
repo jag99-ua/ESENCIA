@@ -97,7 +97,7 @@ Comprueba HOME en móvil, tablet y escritorio; menú con teclado y Escape; archi
 Configuración comprobada con la documentación oficial: https://vercel.com/docs/builds/configure-a-build y https://vercel.com/docs/project-configuration/vercel-json. Las rutas impiden servir el briefing (contiene conceptos aún no anunciados) y la documentación en Vercel; un repositorio GitHub público sí expone sus archivos.
 ## Dirección visual y animación de los logos
 La web combina las referencias DESIGN (1).md y DESIGN.md con la identidad de ESENCIA. css/art-direction.css contiene los ajustes compartidos: negro, plata, titulares de peso regular, espacios abiertos y controles redondeados.
-La HOME usa js/logo-sculpture.js para convertir las siluetas de los dos logos originales en un volumen de partículas. El inicio muestra solo la bomba, que gira 360° sobre un eje inclinado cada 12 segundos. El wordmark se reutiliza en el footer con onda en profundidad y balanceo en X/Z. Un control de pausa afecta a ambas piezas, sin selectores de forma. CONFIG controla velocidad, inclinación, densidad, profundidad y resolución.
+La HOME usa js/logo-sculpture.js para convertir las siluetas de los dos logos originales en un volumen de partículas. El inicio muestra solo la bomba, que gira 360° sobre un eje inclinado cada 12 segundos. El wordmark se reutiliza en el footer con onda en profundidad y balanceo en X/Z. Sin botones de pausa ni selectores; ambas piezas respetan reduced motion. CONFIG controla velocidad, inclinación, densidad, profundidad y resolución.
 No hay librerías, modelos externos ni fuentes comerciales. La animación se detiene fuera de pantalla y al ocultar la pestaña; reduced motion muestra una vista estática. Si falla Canvas permanece el logo original.
 Consulta docs/DESIGN_DIRECTION.md para el criterio de mezcla y los ajustes. Prueba con servidor HTTP local.
 
@@ -108,7 +108,7 @@ Teléfono confirmado: +34 611434780, editable en contacts.phone de js/data.js y 
 
 
 ## Envío real de consultas
-Configura RESEND_API_KEY y RESEND_FROM_EMAIL como variables privadas en Vercel y redepliega. El destinatario es marcos.blayapicazo@gmail.com; WhatsApp/teléfono usan +34 611434780. Pasos en docs/CONTACT_SETUP.md. Las claves no van en GitHub. Instagram y TikTok oficiales están en contacts de js/data.js y los fallbacks de los footers.
+Configura RESEND_API_KEY, RESEND_FROM_EMAIL y RESEND_TO_EMAIL como variables privadas en Vercel y redepliega. El destinatario se configura en RESEND_TO_EMAIL del servidor; WhatsApp/teléfono usan +34 611434780. Pasos en docs/CONTACT_SETUP.md. Las claves no van en GitHub. Instagram y TikTok oficiales están en contacts de js/data.js y los fallbacks de los footers.
 
 Pruebas de la función de contacto: node --test tests/contact.test.cjs. Usan un proveedor simulado y no envían correo real.
 
@@ -122,3 +122,8 @@ Los diez eventos tienen cartel real. El archivo comienza con GÉNESIS; explora c
 ## Carteles de eventos
 Los diez carteles numerados se asocian por number en js/events.js. La web utiliza assets/events/web/NNN-640.jpg y NNN-1280.jpg, con proporción completa, carga diferida y selección responsive. No se publican descripciones cromáticas.
 Los originales numerados de assets/events se mantienen localmente y se excluyen de Git y Vercel por su gran tamaño (algunos superan 60 MB). Haz una copia de seguridad externa: GitHub conserva las versiones web, no los originales. Para sustituir un cartel, actualiza sus dos versiones web y sus dimensiones en js/events.js.
+
+## Ajustes de HOME y contacto
+HOME muestra WhatsApp, Instagram, TikTok y YouTube; no muestra teléfono ni email. contact.html contiene únicamente el formulario de nombre, email, tema y mensaje. Se conserva un aviso breve de privacidad. js/contact-form.js envía a /api/contact, sin guardar datos del visitante en el navegador.
+El SDK de Resend se utiliza solo en servidor. npm ci instala la dependencia; npm test valida el envío con proveedor simulado. npm run email:test ejecuta el ejemplo Hello World con las variables privadas locales.
+js/icons.js sustituye las flechas por SVG también al crear contenido dinámico, evitando emojis en iOS. El panel de carteles permanece fuera de la lista y no se mueve durante el foco o tap.

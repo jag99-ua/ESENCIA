@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "resend": "6.32.1"
+  },
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/contact.test.cjs",
+    "email:test": "node --env-file-if-exists=.env.local scripts/resend-test.cjs"
+  }
+}

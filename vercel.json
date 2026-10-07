@@ -16,11 +16,12 @@
       "continue": true
     },
     {
-      "src": "/(Project_Context\\.md|README\\.md|DESIGN(.*)\\.md|docs(/.*)?|tests(/.*)?|\\.env(.*)?|.*\\.gitkeep)",
+      "src": "/(Project_Context\\.md|README\\.md|DESIGN(.*)\\.md|docs(/.*)?|tests(/.*)?|node_modules(/.*)?|scripts(/.*)?|package(-lock)?\\.json|\\.env(.*)?|.*\\.gitkeep)",
       "status": 404
     },
     {
       "handle": "filesystem"
     }
-  ]
+  ],
+  "installCommand": "npm ci --omit=dev"
 }

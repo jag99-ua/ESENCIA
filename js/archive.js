@@ -15,7 +15,7 @@
     let pinned = null;
     let hovered = null;
     let focused = null;
-    const compact = window.matchMedia('(max-width: 1000px)');
+
 
     function show(event) {
       applyTheme(container, event);
@@ -24,10 +24,7 @@
         button.setAttribute("aria-pressed", String(selected));
         button.closest(".event-row").classList.toggle("is-selected", selected);
       });
-      if (compact.matches && event) {
-        const selectedRow = rows.find(row => row.item.id === event.id);
-        if (selectedRow) selectedRow.button.closest(".event-row").after(panel);
-      } else { container.append(panel); }
+      // El panel permanece fuera de la lista: moverlo al recibir foco cancelaba taps en iOS.
       panel.replaceChildren();
       if (!event) {
         panel.append(node("p", "meta", "Universos ESENCIA"));
@@ -46,7 +43,7 @@
       link.href = detailUrl(event.id);
       panel.append(link);
     }
-    const restore = () => show(focused || hovered || pinned || initial);
+    const restore = () => show(pinned || focused || hovered || initial);
     list.replaceChildren();
     events.forEach(item => {
       const row = node("article", "event-row");
@@ -63,10 +60,13 @@
       if (meta) button.append(node("span", "event-row-meta meta", meta));
       button.addEventListener("click", () => {
         pinned = pinned?.id === item.id ? null : item;
-        if (!pinned) { focused = null; hovered = null; }
+        focused = null; hovered = null;
         restore();
       });
-      button.addEventListener("focus", () => { focused = item; restore(); });
+      button.addEventListener("focus", () => {
+        focused = item;
+        if (button.matches(":focus-visible")) { pinned = null; show(item); }
+      });
 
       row.addEventListener("pointerenter", event => {
         if (event.pointerType === "mouse") { hovered = item; show(item); }
@@ -85,7 +85,7 @@
     container.addEventListener("focusout", event => {
       if (!container.contains(event.relatedTarget)) { focused = null; restore(); }
     });
-    compact.addEventListener("change", restore);
+
     container.addEventListener("pointerleave", () => { hovered = null; restore(); });
     show(initial);
   });

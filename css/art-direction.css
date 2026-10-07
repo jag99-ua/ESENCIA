@@ -115,3 +115,10 @@
   .about .section-label { margin-bottom: .5rem; }
   .about-copy { margin-top: 0; }
 }
+
+.ui-arrow { display: inline-block; width: 1em; height: 1em; vertical-align: -.1em; flex-shrink: 0; }
+.youtube-icon { display: inline-block; width: 1.65em; height: 1.65em; vertical-align: -.35em; margin-right: .45em; }
+.philosophy .lead { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.3; letter-spacing: -.025em; max-width: 30rem; }
+.simple-contact { max-width: 52rem; margin-inline: auto; }
+.simple-contact .form-status { margin-top: 1.5rem; }
+@media(max-width:600px) { .simple-contact .message-form { grid-template-columns: 1fr; } }

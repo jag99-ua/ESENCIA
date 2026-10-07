@@ -1,8 +1,8 @@
-/* Envío privado de consultas a través de Resend; sin dependencias.
+/* Envío privado de consultas a través del SDK oficial de Resend.
  * Configurar RESEND_API_KEY y RESEND_FROM_EMAIL en Vercel.
  */
 const { createHash } = require("node:crypto");
-const DESTINATION = "marcos.blayapicazo@gmail.com";
+const { Resend } = require("resend");
 const TOPICS = new Set(["General", "Artistas / Bookings", "Colaboraciones", "Prensa", "Merchandising"]);
 const attempts = new Map();
 function allowRequest(req) {
@@ -42,21 +42,19 @@ module.exports = async function contact(req, res) {
     return fail(400, "Revisa nombre, email y mensaje antes de enviarlo.");
   }
   const token = process.env.RESEND_API_KEY, from = process.env.RESEND_FROM_EMAIL;
-  if (!token || !from) return fail(503, "El envío por email todavía no está disponible. Puedes contactar por WhatsApp o teléfono.");
+  const destination = process.env.RESEND_TO_EMAIL;
+  if (!token || !from || !destination || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(destination)) return fail(503, "El envío por email todavía no está disponible. Puedes contactar por WhatsApp.");
   if (!allowRequest(req)) {
     res.setHeader("Retry-After", "600"); return fail(429, "Has enviado varias consultas. Espera unos minutos o contacta por WhatsApp.");
   }
   const text = ["Nueva consulta desde ESENCIA", "", "Nombre: " + name, "Email: " + email,
     phone ? "Teléfono: " + phone : "", "Asunto: " + topic, "", message].join("\n");
   try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST", signal: AbortSignal.timeout(12000),
-      headers: { "Authorization": "Bearer " + token, "Content-Type": "application/json",
-        "Idempotency-Key": "esencia-contact-" + requestId },
-      body: JSON.stringify({ from, to: [DESTINATION], reply_to: email, subject: "ESENCIA / " + topic, text })
-    });
-    const result = await response.json();
-    if (!response.ok || !result.id) return fail(502, "No se pudo confirmar el envío. Reintenta o contacta por WhatsApp.");
+    const resend = new Resend(token);
+    const { data, error } = await resend.emails.send({
+      from, to: [destination], replyTo: email, subject: "ESENCIA / " + topic, text
+    }, { signal: AbortSignal.timeout(12000), idempotencyKey: "esencia-contact-" + requestId });
+    if (error || !data?.id) return fail(502, "No se pudo confirmar el envío. Reintenta o contacta por WhatsApp.");
     // Aceptado por el proveedor; no confirma entrega ni lectura.
     return res.status(200).json({ ok: true });
   } catch { return fail(502, "No se pudo confirmar el envío. Reintenta o contacta por WhatsApp."); }

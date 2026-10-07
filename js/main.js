@@ -65,16 +65,14 @@
       if (photo.caption) figure.append(element("figcaption", "meta", photo.caption));
       wall.append(figure);
     });
-    document.querySelector("[data-gallery-note]").hidden = true;
+    document.querySelector("[data-gallery-note]")?.remove();
   }
 
   const links = [];
   const contact = data.contacts;
-  const phone = (contact.phone || "").replace(/\s/g, "");
-  if (/^\+?\d{8,15}$/.test(phone)) links.push([contact.phone + " ↗", "tel:" + phone]);
-  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email)) links.push(["Email ↗", "mailto:" + contact.email]);
   if (/^\d{8,15}$/.test(contact.whatsapp)) links.push(["WhatsApp ↗", "https://wa.me/" + contact.whatsapp]);
   ["instagram", "tiktok"].forEach(key => { const url = safeUrl(contact[key]); if (url) links.push([key === "instagram" ? "Instagram ↗" : "TikTok ↗", url]); });
+  links.push(["YouTube ↗", "https://www.youtube.com/@EsenciaEvents"]);
   if (links.length) {
     const slot = document.querySelector("[data-contact]");
     slot.replaceChildren();

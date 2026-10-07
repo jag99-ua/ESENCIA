@@ -11,7 +11,6 @@
     bombPeriod: 12, axisTilt: 23.4 * Math.PI / 180, wordmarkWaveSpeed: 1.8 };
   const base = new URL("../", document.currentScript.src);
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  const controls = [...document.querySelectorAll("[data-artifact-pause]")];
   const scenes = [];
   let playing = !reduced.matches && !navigator.connection?.saveData;
   const hash = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
@@ -42,13 +41,6 @@
     return candidates.filter(p => p.seed < fraction);
   }
 
-  function updateControls() {
-    controls.forEach(button => {
-      button.disabled = reduced.matches || !scenes.some(scene => scene.ready());
-      button.setAttribute("aria-pressed", String(!playing));
-      button.textContent = playing ? "Pausar animaciones" : "Activar animaciones";
-    });
-  }
 
   function createScene(host) {
     const context = host.querySelector("canvas")?.getContext("2d");
@@ -136,21 +128,16 @@
     new ResizeObserver(resize).observe(host);
     sample(wordmark ? "wordmark" : "bomb").then(cloud => {
       points = cloud; initialized = true; host.classList.add("is-ready");
-      updateControls(); resize(); schedule();
+      resize(); schedule();
     }).catch(() => {
       // Conserva la imagen original si el navegador bloquea lectura de píxeles.
-      host.classList.add("is-fallback"); updateControls();
+      host.classList.add("is-fallback");
     });
   }
   hosts.forEach(createScene);
-  controls.forEach(button => button.addEventListener("click", () => {
-    playing = !playing && !reduced.matches;
-    updateControls();
-    scenes.forEach(scene => { if (playing) scene.schedule(); else { scene.stop(); scene.draw(); } });
-  }));
   reduced.addEventListener("change", () => {
-    playing = false; updateControls();
-    scenes.forEach(scene => { scene.stop(); scene.reset(); scene.draw(); });
+    playing = !reduced.matches && !navigator.connection?.saveData;
+    scenes.forEach(scene => { scene.stop(); scene.reset(); scene.draw(); if (playing) scene.schedule(); });
   });
   document.addEventListener("visibilitychange", () => {
     scenes.forEach(scene => { if (document.hidden) scene.stop(); else scene.schedule(); });

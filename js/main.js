@@ -70,13 +70,30 @@
 
   const links = [];
   const contact = data.contacts;
-  if (/^\d{8,15}$/.test(contact.whatsapp)) links.push(["WhatsApp ↗", "https://wa.me/" + contact.whatsapp]);
-  ["instagram", "tiktok"].forEach(key => { const url = safeUrl(contact[key]); if (url) links.push([key === "instagram" ? "Instagram ↗" : "TikTok ↗", url]); });
-  links.push(["YouTube ↗", "https://www.youtube.com/@EsenciaEvents"]);
-  if (links.length) {
-    const slot = document.querySelector("[data-contact]");
-    slot.replaceChildren();
-    links.forEach(([label, href]) => { const link = element("a", "", label); link.href = href; slot.append(link); });
+  if (/^\d{8,15}$/.test(contact.whatsapp)) links.push(["WhatsApp", "https://wa.me/" + contact.whatsapp, "whatsapp.jpg"]);
+  ["instagram", "tiktok"].forEach(key => {
+    const url = safeUrl(contact[key]);
+    if (url) links.push([key === "instagram" ? "Instagram" : "TikTok", url, key + ".jpg"]);
+  });
+  links.push(["YouTube", "https://www.youtube.com/@EsenciaEvents", "youtube.png"]);
+  const contactSlot = document.querySelector("[data-contact]");
+  if (links.length && contactSlot) {
+    contactSlot.replaceChildren();
+    links.forEach(([label, href, file]) => {
+      const link = element("a", "social-icon-link");
+      link.href = href;
+      link.setAttribute("aria-label", label);
+      link.title = label;
+      const img = element("img");
+      img.src = "assets/logos/" + file;
+      img.alt = "";
+      img.width = file.endsWith(".png") ? 512 : 1408;
+      img.height = file.endsWith(".png") ? 512 : 768;
+      img.loading = "lazy";
+      img.decoding = "async";
+      link.append(img);
+      contactSlot.append(link);
+    });
   }
   if (/^https?:\/\//.test(data.site.url)) {
     const url = safeUrl(data.site.url);

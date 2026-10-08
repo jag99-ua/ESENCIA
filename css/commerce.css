@@ -77,3 +77,7 @@ button:disabled { opacity: .4; cursor: not-allowed; }
 .privacy-copy p + p { margin-top: 1rem; }
 .privacy-copy a, .form-note a, .watch-notice a { text-decoration: underline; text-underline-offset: .2em; }
 .footer-privacy { display: inline-block; margin-top: 1.5rem; }
+
+.cart-cta { display: flex; width: 100%; gap: .4em; margin-top: 2rem; min-height: 88px; font: clamp(1.4rem, 3vw, 2.5rem)/1.1 var(--font-display); text-transform: none; border-radius: 0; background: var(--fg); color: var(--bg); }
+.checkout-section > .form-note { margin-bottom: 1.5rem; }
+[data-order-status] { margin-top: 1.5rem; }

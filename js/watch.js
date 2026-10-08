@@ -82,9 +82,6 @@
     section.querySelector("[data-watch-label]").textContent = label(selected);
     section.querySelector("[data-watch-artist]").textContent = selected.artist;
     section.querySelector("[data-watch-title]").textContent = selected.title;
-    const external = section.querySelector("[data-watch-external]");
-    external.href = "https://youtu.be/" + selected.youtubeId;
-    external.setAttribute("aria-label", "Ver " + selected.title + " en YouTube");
     status.textContent = "Seleccionado: " + selected.title;
     resetScreen();
   }

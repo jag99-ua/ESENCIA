@@ -6,44 +6,40 @@
   document.querySelectorAll("[data-event-archive]").forEach(container => {
     const list = container.querySelector("[data-event-list]");
     const panel = container.querySelector("[data-event-preview]");
-    const full = all();
-    const limit = Number(container.dataset.limit);
+    const full = all(), limit = Number(container.dataset.limit);
     const events = limit > 0 ? full.slice(-limit) : full;
-    // Mostrar desde el inicio una edición con cartel real, sin exigir hover/tap.
     const initial = events.find(item => item.poster || item.posterDesktop || item.posterMobile) || null;
+    const compact = matchMedia("(max-width: 1000px)");
     const rows = [];
-    let pinned = null;
-    let hovered = null;
-    let focused = null;
-
+    let selected = null;
 
     function show(event) {
       applyTheme(container, event);
+      panel.hidden = !event;
       rows.forEach(({ button, item }) => {
-        const selected = event?.id === item.id;
-        button.setAttribute("aria-pressed", String(selected));
-        button.closest(".event-row").classList.toggle("is-selected", selected);
+        const active = event?.id === item.id;
+        button.setAttribute("aria-pressed", String(active));
+        if (compact.matches) button.setAttribute("aria-expanded", String(active));
+        else button.removeAttribute("aria-expanded");
+        button.closest(".event-row").classList.toggle("is-selected", active);
       });
-      // El panel permanece fuera de la lista: moverlo al recibir foco cancelaba taps en iOS.
-      panel.replaceChildren();
-      if (!event) {
-        panel.append(node("p", "meta", "Universos ESENCIA"));
-        panel.append(node("p", "event-preview-title", "Selecciona una edición."));
-        panel.append(node("p", "muted", "Del origen a REBIRTH. " + full.length + " ediciones confirmadas."));
-        return;
+      if (compact.matches && event) {
+        // Se mueve después del click, nunca al recibir foco o pointerdown.
+        rows.find(row => row.item.id === event.id).button.closest(".event-row").after(panel);
+      } else if (!compact.matches) {
+        container.append(panel);
       }
-      panel.append(node("p", "meta", "Edición " + event.number));
-      panel.append(node("h3", "event-preview-title", event.displayName));
-      panel.append(date(event.date));
+      panel.replaceChildren();
+      if (!event) return;
+      panel.append(node("p", "meta", "Edición " + event.number), node("h3", "event-preview-title", event.displayName), date(event.date));
       if (event.location) panel.append(node("p", "meta", event.location));
       if (event.type) panel.append(node("p", "event-type", event.type));
       const artwork = poster(event);
       if (artwork) panel.append(artwork);
       const link = node("a", "text-link", "Ver ficha →");
-      link.href = detailUrl(event.id);
-      panel.append(link);
+      link.href = detailUrl(event.id); panel.append(link);
     }
-    const restore = () => show(pinned || focused || hovered || initial);
+
     list.replaceChildren();
     events.forEach(item => {
       const row = node("article", "event-row");
@@ -51,42 +47,34 @@
       const button = node("button", "event-select");
       button.type = "button";
       button.setAttribute("aria-label", "Explorar " + item.displayName + ", edición " + item.number);
-      button.setAttribute("aria-pressed", "false");
       button.setAttribute("aria-controls", panel.id);
-      button.append(node("span", "event-number meta", item.number));
-      const title = node("span", "event-name", item.name);
-      button.append(title, date(item.date));
-      const meta = [item.type, item.location].filter(Boolean).join(" / ");
-      if (meta) button.append(node("span", "event-row-meta meta", meta));
+      button.append(node("span", "event-number meta", item.number), node("span", "event-name", item.name), date(item.date));
+      const metadata = [item.type, item.location].filter(Boolean).join(" / ");
+      if (metadata) button.append(node("span", "event-row-meta meta", metadata));
       button.addEventListener("click", () => {
-        pinned = pinned?.id === item.id ? null : item;
-        focused = null; hovered = null;
-        restore();
+        selected = selected?.id === item.id ? null : item;
+        show(selected || (compact.matches ? null : initial));
       });
       button.addEventListener("focus", () => {
-        focused = item;
-        if (button.matches(":focus-visible")) { pinned = null; show(item); }
+        // iOS puede dar foco antes de completar el tap: no alterar el layout móvil.
+        if (!compact.matches) show(item);
       });
-
       row.addEventListener("pointerenter", event => {
-        if (event.pointerType === "mouse") { hovered = item; show(item); }
+        if (!compact.matches && event.pointerType === "mouse") show(item);
       });
-
       button.addEventListener("keydown", event => {
-        if (event.key === "Escape") { pinned = null; focused = null; hovered = null; show(initial); }
+        if (event.key === "Escape") { selected = null; show(compact.matches ? null : initial); }
       });
       const link = node("a", "event-detail-link", "↗");
       link.href = detailUrl(item.id);
       link.setAttribute("aria-label", "Ficha de " + item.displayName + ", " + item.date.slice(0, 4));
-      row.append(button, link);
-      rows.push({button, item});
-      list.append(row);
+      row.append(button, link); rows.push({ button, item }); list.append(row);
     });
+    container.addEventListener("pointerleave", () => { if (!compact.matches) show(selected || initial); });
     container.addEventListener("focusout", event => {
-      if (!container.contains(event.relatedTarget)) { focused = null; restore(); }
+      if (!compact.matches && !container.contains(event.relatedTarget)) show(selected || initial);
     });
-
-    container.addEventListener("pointerleave", () => { hovered = null; restore(); });
-    show(initial);
+    compact.addEventListener("change", () => show(selected || (compact.matches ? null : initial)));
+    show(compact.matches ? null : initial);
   });
 })();

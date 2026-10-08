@@ -50,7 +50,7 @@
       const info=node("div","product-info");
       info.append(node("p","meta",item.demo?"Producto de muestra":item.category || "Merch"),node("h1","display product-title",item.name),node("p","product-detail-price",money(item.price)),node("p","product-description",item.description));
       if(item.variant)info.append(node("p","meta","Variante / "+item.variant));
-      if(item.demo)info.append(node("p","demo-note","Diseño, precio y stock de simulación. Este producto no está a la venta."));
+      if(item.demo)info.append(node("p","demo-note","Diseño, precio y stock de muestra. Confirmaremos contigo los detalles al recibir tu solicitud."));
       const form=node("form","product-options");
       const status=node("p","form-status");status.setAttribute("role","status");
       let size=null;
@@ -64,14 +64,15 @@
       const label=node("label","field","Cantidad");
       const quantity=node("input");quantity.type="number";quantity.min="1";quantity.max=String(Math.min(item.stock || 1,99));quantity.value="1";quantity.name="quantity";quantity.required=true;
       label.append(quantity);form.append(label);
-      const add=node("button","primary-button",item.demo?"Añadir a la simulación":"Añadir al carrito");add.type="submit";add.disabled=!ready(item);form.append(add,status);
+      const add=node("button","primary-button","Añadir al carrito");add.type="submit";add.disabled=!ready(item);form.append(add,status);
       form.addEventListener("submit",event=>{
         event.preventDefault(); if(!form.reportValidity())return;
         const result=cart.addToCart(item.id,size?.value || "",Number(quantity.value));
         status.textContent=result.message;
         if(result.ok){const link=node("a","text-link","Ver carrito →");link.href=store.url("cart.html");status.append(document.createTextNode(" "),link);}
       });
-      info.append(form);
+      const cartLink=node("a","secondary-button cart-cta","Ver carrito →");cartLink.href=store.url("cart.html");
+      info.append(form,cartLink);
       detail.append(visual(item),info);
     }
   }

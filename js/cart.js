@@ -50,7 +50,7 @@
     if (existing) existing.quantity += quantity;
     else memory.push(item);
     memory = normalize(memory); save();
-    return {ok:true, message:product.demo ? "Añadido al carrito de muestra." : "Añadido al carrito."};
+    return {ok:true, message:"Añadido al carrito."};
   }
   function removeFromCart(itemKey) { memory = getCart().filter(item => item.key !== itemKey); save(); }
   function updateQuantity(itemKey, quantity) {

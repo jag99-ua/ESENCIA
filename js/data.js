@@ -2,7 +2,7 @@
  * Completar solo con información validada por ESENCIA.
  * Este archivo es público: nunca incluir secretos.
  */
-window.ESENCIA_DATA = {
+const ESENCIA_DATA = {
   // Assets originales de ESENCIA. El wordmark negro se muestra blanco mediante CSS.
   logos: { wordmark: "assets/logos/54556e34-e6f0-4224-a22b-40b828f6fcf9.png", bomb: "assets/logos/978d7eee-0ed3-4bf8-a2be-967ae82970fa.jpg" },
   site: { url: "", socialImage: "" },
@@ -76,3 +76,7 @@ window.ESENCIA_DATA = {
   }
 ]
 };
+
+// El servidor y el navegador comparten el catálogo; aquí nunca van claves privadas.
+if (typeof module === "object" && module.exports) module.exports = ESENCIA_DATA;
+else window.ESENCIA_DATA = ESENCIA_DATA;

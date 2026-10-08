@@ -28,10 +28,13 @@ Un servidor python/http.server permite revisar la web, pero no ejecuta api/conta
 Validación en navegador y servidor, destinatario fijo, contenido en texto plano, control de origen, campo antispam y clave de idempotencia por consulta.
 Límite de 6 solicitudes por 10 minutos por huella de IP en cada instancia. Es protección básica en memoria, no límite distribuido entre instancias; para tráfico abusivo usa el firewall de Vercel o una protección compartida.
 No guarda consultas ni datos personales en localStorage. El proveedor procesa el correo enviado.
-Los pedidos del catálogo demo no se envían por API ni WhatsApp: continúan siendo una simulación.
+El carrito envía solicitudes de contacto por API, también para el catálogo de muestra. El correo indica que productos, precios y disponibilidad están pendientes de confirmar. El servidor valida IDs, tallas, cantidades y total desde el catálogo compartido. No hay pagos ni reserva de stock.
 Documentación: https://resend.com/docs/api-reference/emails/send-email y https://vercel.com/docs/functions/runtimes/node-js.
 
 ## Modo de prueba actual
-Se ha elegido recibir las consultas en el correo de registro de Resend, con onboarding@resend.dev como remitente. Esto permite probar sin dominio propio; no permite enviar a otro destinatario. El destino y el remitente se han configurado en Vercel Production. Falta guardar una clave nueva en RESEND_API_KEY. Revoca cualquier clave compartida en un chat.
+Se ha elegido recibir las consultas en el correo de registro de Resend, con onboarding@resend.dev como remitente. Esto permite probar sin dominio propio; no permite enviar a otro destinatario. El destino y el remitente se han configurado en Vercel Production. Las tres variables están configuradas en Production. La presencia de una clave no confirma su validez ni la entrega; realiza una prueba desde la web y revisa Resend. Revoca cualquier clave compartida en un chat.
 Sustituye re_xxxxxxxxx por la clave real exclusivamente en una variable privada de Vercel, o .env.local para pruebas locales; nunca en código ni Git.
 El ejemplo Hello World está en scripts/resend-test.cjs. Para ejecutarlo localmente: npm ci, configura las tres variables privadas y ejecuta npm run email:test. Es un envío real manual. El formulario usa /api/contact y envía nombre, email, tema y mensaje en texto plano.
+
+## Probar el envío
+Guarda RESEND_API_KEY en Production y haz Redeploy (o publica un commit nuevo). Abre contact.html, envía una consulta de prueba y revisa el buzón configurado en RESEND_TO_EMAIL, incluidos spam y el registro de Resend. Prueba después una solicitud de cart.html con talla y cantidad; debe llegar con los productos y los datos de contacto. El remitente onboarding@resend.dev solo permite el destinatario de registro de Resend.

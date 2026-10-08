@@ -37,6 +37,26 @@ test("Contacto: validación, configuración, entrega al proveedor y fallos",asyn
   assert.equal(payload.reply_to,"visitor@example.test");assert.equal(payload.from,"sender@example.test");
   assert.ok(payload.text.includes("<script>"));assert.equal(payload.html,undefined);
   assert.ok(headers["idempotency-key"].endsWith(valid().requestId));assert.equal(headers.authorization,"Bearer test-no-real-key");
+
+  const order = (items=[{productId:"demo-tee-001",size:"L",quantity:2},{productId:"demo-cap-001",size:"",quantity:1}]) => ({...valid(),kind:"order",message:"",items});
+  assert.equal((await request({...order(),to:"attacker@example.test",total:1,items:[{productId:"demo-tee-001",size:"L",quantity:2,price:1,name:"Forged"},{productId:"demo-cap-001",quantity:1}]})).code,200);
+  assert.deepEqual(payload.to,["owner@example.test"]);
+  assert.equal(payload.subject,"ESENCIA / Solicitud de productos");
+  assert.ok(payload.text.includes("ESENCIA TEE 001") && payload.text.includes("Talla L") && payload.text.includes("Cantidad: 2"));
+  assert.ok(payload.text.includes("68,00") && payload.text.includes("CATÁLOGO DE MUESTRA"));
+  assert.ok(!payload.text.includes("Forged"));assert.equal(payload.html,undefined);
+  const beforeInvalid=calls;
+  for(const items of [[],null,[null],[{productId:"unknown",quantity:1}],[{productId:"demo-tee-001",quantity:1}],[{productId:"demo-tee-001",size:"XXL",quantity:1}],
+    [{productId:"demo-cap-001",size:"L",quantity:1}],[{productId:"demo-cap-001",quantity:0}],[{productId:"demo-cap-001",quantity:1.5}],
+    [{productId:"demo-cap-001",quantity:"1"}],[{productId:"demo-cap-001",quantity:16}],
+    [{productId:"demo-tee-001",size:"L",quantity:20},{productId:"demo-tee-001",size:"M",quantity:20}],
+    Array.from({length:51},()=>({productId:"demo-cap-001",quantity:1}))]) {
+    assert.equal((await request(order(items))).code,400);
+  }
+  assert.equal((await request({...valid(),kind:"unexpected"})).code,400);
+  assert.equal(calls,beforeInvalid);
+  assert.equal((await request(order([{productId:"demo-tee-001",size:"M",quantity:2},{productId:"demo-tee-001",size:"M",quantity:3}]))).code,200);
+  assert.ok(payload.text.includes("Cantidad: 5") && payload.text.includes("125,00"));
   const noPhone=valid();delete noPhone.phone;assert.equal((await request(noPhone)).code,200);
   global.fetch=async()=>new Response(JSON.stringify({message:"Private provider detail"}),{status:403});
   const failure=await request();assert.equal(failure.code,502);assert.equal(failure.data.ok,false);

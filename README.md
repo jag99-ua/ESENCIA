@@ -14,7 +14,7 @@ Primera fase de la web oficial: HOME estática en HTML, CSS y JavaScript sin fra
 - js/main.js: logos, contacto y próximo evento de la HOME.
 - assets/logos, assets/images/home, assets/images/gallery, assets/events/rebirth, assets/merch, assets/video, assets/icons: material original.
 - shop.html: catálogo; products/product.html?id=ID: ficha; cart.html: carrito; contact.html: consultas.
-- js/store.js, cart.js, commerce.js y contact.js: productos, carrito persistente y mensajes manuales.
+- js/store.js, cart.js, commerce.js y contact.js: productos, carrito persistente y solicitudes por email.
 - css/commerce.css y assets/merch/demo-*.svg: estilos y visuales de muestra.
 - docs/CONTENT_CHECKLIST.md: contenido pendiente.
 - vercel.json: despliegue estático y bloqueo del briefing/documentación en la web pública.
@@ -58,11 +58,11 @@ Referencia oficial del reproductor y modo de privacidad mejorada: https://develo
 El propietario ha autorizado un catálogo simulado: camiseta (25 €), sudadera (55 €) y gorra (18 €). Productos, diseños, precios, tallas y stock son ficticios y están señalados como muestra en la web.
 Edita products en js/data.js. Cada producto necesita id único, name, description, price numérico en euros, category, variant, images, sizes, requiresSize y stock. active:false lo oculta.
 Los visuales SVG son esquemas de muestra, no fotografías ni diseños aprobados para producir. Para sustituirlos añade rutas reales en images, relativas a la raíz del proyecto.
-shop.demoMode:true marca la tienda como simulación; demo:true identifica cada producto ficticio. El carrito de muestra funciona, pero no permite enviar pedidos.
+shop.demoMode:true marca la tienda como simulación; demo:true identifica cada producto ficticio. El carrito permite enviar solicitudes de contacto y conserva el aviso de catálogo de muestra.
 Para activar pedidos reales, sustituye los datos ficticios por catálogo confirmado, pon shop.demoMode:false y demo:false únicamente en productos aprobados, y configura email o WhatsApp oficial. Retira noindex de las páginas de tienda después de validar el catálogo.
 La ficha valida talla y cantidad; el stock se controla también entre distintas tallas del mismo producto.
 El carrito se guarda en localStorage (esencia-cart-v1), persiste entre páginas y recarga, permite cambiar cantidades, quitar productos y vaciarlo. El total se recalcula desde los precios del catálogo, sin confiar en los precios guardados.
-El pedido es manual: prepara un resumen revisable. No hay pagos online ni envío de datos al servidor.
+El cliente envía sus datos y selección por email mediante /api/contact. El equipo confirma directamente disponibilidad y condiciones. No hay pagos online.
 Si localStorage está bloqueado, el carrito funciona durante la visita y avisa al intentar guardarlo.
 
 ## Formulario de contacto
@@ -103,7 +103,7 @@ Consulta docs/DESIGN_DIRECTION.md para el criterio de mezcla y los ajustes. Prue
 
 
 El texto «Colectivo de música electrónica» está en 01 / El colectivo. --section-space en css/art-direction.css controla la separación compacta (2–4 rem).
-Teléfono confirmado: +34 611434780, editable en contacts.phone de js/data.js y en los enlaces de fallback HTML. HOME y Contacto permiten llamar. El botón HOME dice «Contacta con nosotros». Email, WhatsApp e Instagram/TikTok ya están confirmados y configurados; el catálogo continúa como simulación.
+Teléfono confirmado: +34 611434780, editable en contacts.phone de js/data.js y en los enlaces de fallback HTML. HOME muestra WhatsApp y redes; el formulario de Contacto envía consultas por API. El botón HOME dice «Contacta con nosotros». Email, WhatsApp e Instagram/TikTok ya están confirmados y configurados; el catálogo continúa como simulación.
 
 
 
@@ -126,4 +126,8 @@ Los originales numerados de assets/events se mantienen localmente y se excluyen 
 ## Ajustes de HOME y contacto
 HOME muestra WhatsApp, Instagram, TikTok y YouTube; no muestra teléfono ni email. contact.html contiene únicamente el formulario de nombre, email, tema y mensaje. Se conserva un aviso breve de privacidad. js/contact-form.js envía a /api/contact, sin guardar datos del visitante en el navegador.
 El SDK de Resend se utiliza solo en servidor. npm ci instala la dependencia; npm test valida el envío con proveedor simulado. npm run email:test ejecuta el ejemplo Hello World con las variables privadas locales.
-js/icons.js sustituye las flechas por SVG también al crear contenido dinámico, evitando emojis en iOS. El panel de carteles permanece fuera de la lista y no se mueve durante el foco o tap.
+js/icons.js sustituye las flechas por SVG también al crear contenido dinámico, evitando emojis en iOS. En móvil el panel aparece justo después de la fiesta pulsada; solo se mueve al completar el click, nunca durante el foco inicial del tap.
+
+## Solicitudes desde el carrito
+El cliente añade productos al carrito y completa nombre, email, teléfono opcional y observaciones. Enviar solicitud manda los datos y productos a la dirección privada RESEND_TO_EMAIL mediante /api/contact. js/contact.js controla el formulario. El servidor obtiene nombres y precios del mismo catálogo de js/data.js y comprueba tallas y cantidades. Los productos actuales siguen siendo de muestra; el correo lo identifica y el equipo confirma disponibilidad y condiciones directamente. No hay cobros ni reserva automática de stock.
+En móvil el archivo funciona como desplegable: cada tap abre el cartel bajo esa fila; un segundo tap lo cierra. Desktop mantiene el panel lateral. WATCH solo conserva el enlace externo al canal.

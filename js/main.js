@@ -75,7 +75,7 @@
     const url = safeUrl(contact[key]);
     if (url) links.push([key === "instagram" ? "Instagram" : "TikTok", url, key + ".jpg"]);
   });
-  links.push(["YouTube", "https://www.youtube.com/@EsenciaEvents", "youtube.png"]);
+  links.push(["YouTube", "https://www.youtube.com/@EsenciaEvents", "youtube.jpg"]);
   const contactSlot = document.querySelector("[data-contact]");
   if (links.length && contactSlot) {
     contactSlot.replaceChildren();

@@ -12,7 +12,29 @@ const ESENCIA_DATA = {
   nextEvent: { active: false, name: "", date: "", venue: "", lineup: [], artwork: "", tickets: "" },
   // La cronología confirmada está en js/events.js.
   // Fotos autorizadas: { src: "assets/images/gallery/foto.webp", alt: "...", caption: "...", width: 1200, height: 800 }
-  gallery: [],
+  gallery: [
+  {
+    "src": "assets/images/home/pista.jpeg",
+    "alt": "Vista desde la cabina del DJ hacia el público de ESENCIA.",
+    "caption": "Pista.",
+    "width": 567,
+    "height": 423
+  },
+  {
+    "src": "assets/images/home/amigos.jpeg",
+    "alt": "Grupo de amigos posando juntos en un evento de ESENCIA.",
+    "caption": "Amigos.",
+    "width": 567,
+    "height": 423
+  },
+  {
+    "src": "assets/images/home/movimiento.jpeg",
+    "alt": "Manos mezclando música en una mesa de DJ iluminada en verde.",
+    "caption": "Movimiento.",
+    "width": 567,
+    "height": 423
+  }
+],
   team: [],
   manifesto: { approved: false, lines: [] },
   // Catálogo simulado autorizado por el propietario. Mantener demo:true hasta aprobar productos reales.

@@ -129,3 +129,12 @@
 .social-icon-link img, .footer-social-icon img { display: block; width: 40px; height: 40px; object-fit: cover; filter: grayscale(1); }
 .contact-links .social-icon-link:hover, .footer-social-icon:hover { border-color: var(--line); }
 .contact-links .social-icon-link:focus-visible, .footer-social-icon:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+.memory-photo { padding: .6rem; border: 1px solid var(--line); background: var(--bg); }
+.memory-photo img { display: block; }
+.memory-photo:nth-child(1) { transform: rotate(-2deg); }
+.memory-photo:nth-child(2) { margin-top: 2rem; transform: rotate(2deg); }
+@media (max-width: 600px) {
+  .memory-photo:nth-child(2) { margin-top: 1rem; transform: rotate(1deg); }
+  .memory-photo:nth-child(3) { grid-column: 1 / -1; }
+}

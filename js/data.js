@@ -14,13 +14,6 @@ const ESENCIA_DATA = {
   // Fotos autorizadas: { src: "assets/images/gallery/foto.webp", alt: "...", caption: "...", width: 1200, height: 800 }
   gallery: [
   {
-    "src": "assets/images/home/pista.jpeg",
-    "alt": "Vista desde la cabina del DJ hacia el público de ESENCIA.",
-    "caption": "Pista.",
-    "width": 567,
-    "height": 423
-  },
-  {
     "src": "assets/images/home/amigos.jpeg",
     "alt": "Grupo de amigos posando juntos en un evento de ESENCIA.",
     "caption": "Amigos.",
@@ -28,9 +21,16 @@ const ESENCIA_DATA = {
     "height": 423
   },
   {
-    "src": "assets/images/home/movimiento.jpeg",
-    "alt": "Manos mezclando música en una mesa de DJ iluminada en verde.",
+    "src": "assets/images/home/movimiento.jpeg?v=2",
+    "alt": "Personas bailando en la pista de un evento de ESENCIA.",
     "caption": "Movimiento.",
+    "width": 567,
+    "height": 423
+  },
+  {
+    "src": "assets/images/home/pista.jpeg",
+    "alt": "Vista desde la cabina del DJ hacia el público de ESENCIA.",
+    "caption": "Pista.",
     "width": 567,
     "height": 423
   }

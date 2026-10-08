@@ -81,3 +81,12 @@ button:disabled { opacity: .4; cursor: not-allowed; }
 .cart-cta { display: flex; width: 100%; gap: .4em; margin-top: 2rem; min-height: 88px; font: clamp(1.4rem, 3vw, 2.5rem)/1.1 var(--font-display); text-transform: none; border-radius: 0; background: var(--fg); color: var(--bg); }
 .checkout-section > .form-note { margin-bottom: 1.5rem; }
 [data-order-status] { margin-top: 1.5rem; }
+
+/* Confirmacion visible del envio, con foco y cierre nativos. */
+.order-confirmation { margin: auto; width: min(34rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); overflow-y: auto; padding: clamp(1.5rem, 5vw, 3rem); color: var(--fg); background: #111; border: 1px solid var(--fg); }
+.order-confirmation::backdrop { background: rgb(0 0 0 / .85); }
+.confirmation-mark { display: block; width: 3.5rem; height: 3.5rem; margin-bottom: 1.5rem; }
+.confirmation-mark svg { width: 100%; height: 100%; }
+.order-confirmation h2 { margin: 1rem 0 1.5rem; font-size: clamp(2.8rem, 8vw, 4.5rem); line-height: .95; letter-spacing: -.06em; }
+.order-confirmation > p:not(.meta) { font-size: 1.05rem; line-height: 1.6; }
+.order-confirmation .primary-button { margin-top: 2rem; width: 100%; justify-content: center; }

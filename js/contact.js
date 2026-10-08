@@ -5,6 +5,8 @@
   if (!form || !cart) return;
   const status = document.querySelector("[data-order-status]");
   const submit = form.querySelector('[type="submit"]');
+  const confirmation = document.querySelector("[data-order-confirmation]");
+  confirmation?.querySelector("[data-close-confirmation]")?.addEventListener("click", () => confirmation.close());
   let busy = false, sent = false, requestId = "";
   const selection = () => cart.getCart().map(item => ({ productId: item.productId, size: item.size, quantity: item.quantity }));
   const reset = () => { if (!busy) { sent = false; requestId = ""; status.textContent = ""; } };
@@ -30,6 +32,7 @@
       const result = await response.json().catch(() => null);
       if (!response.ok || result?.ok !== true) throw Error(result?.error || "No se ha podido enviar. Inténtalo de nuevo.");
       sent = true; status.textContent = "Solicitud enviada. Nos pondremos en contacto contigo para confirmar los productos y su disponibilidad.";
+      if (confirmation && !confirmation.open) confirmation.showModal();
     } catch (error) {
       status.textContent = error.name === "AbortError" ? "No se pudo confirmar el envío. Puedes volver a intentarlo." : error.message;
     } finally {

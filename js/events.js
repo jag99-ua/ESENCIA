@@ -266,7 +266,7 @@ window.ESENCIA_EVENTS = [
   {
     "id": "xplosion-2026",
     "number": "007",
-    "name": "XPLOSION",
+    "name": "XPLOSION II",
     "date": "2026-04-18",
     "theme": "xplosion-2026",
     "type": "Segunda edición",
@@ -280,7 +280,7 @@ window.ESENCIA_EVENTS = [
       "Negro"
     ],
     "concept": "La segunda edición de XPLOSION reinterpreta su identidad en morado neón.",
-    "displayName": "XPLOSION",
+    "displayName": "XPLOSION II",
     "venue": null,
     "lineup": [],
     "poster": "assets/events/web/007-1280.jpg",
